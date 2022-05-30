@@ -8,6 +8,7 @@ import okhttp3.*
 import java.io.IOException
 
 object DotaAPI {
+    const val URL_IMG = "https://api.opendota.com"
     val URL = "https://api.opendota.com/api/constants/heroes"
     private val okHttpClient: OkHttpClient = OkHttpClient()
     private val moshi = Moshi.Builder().build()
@@ -17,11 +18,10 @@ object DotaAPI {
 
 
     @ExperimentalStdlibApi
-    fun loadData(result:HerCallback){
+    fun loadData(result:HeroCallback){
 
 
         val request: Request = Request.Builder().url(URL).build()
-        Log.v("Nebrog","E")
 
         okHttpClient.newCall(request).enqueue(object : Callback {
 
@@ -31,7 +31,6 @@ object DotaAPI {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                Log.v("Nebrog","F")
 
                 val json = response.body?.string()
                 val gist = gistJsonAdapter.fromJson(json)
@@ -41,15 +40,13 @@ object DotaAPI {
                     result.onSuccess(gist)
                 }
                 Log.v("nebrog", gist.toString())
-                Log.v("Nebrog","G")
             }
 
         })
-        Log.v("Nebrog","H")
 
 
     }
-    interface HerCallback{
+    interface HeroCallback{
         fun onSuccess(map:Map<String,HeroesItem>)
         fun onFail()
     }

@@ -1,4 +1,4 @@
-package com.example.fifthweekapp.ui
+package com.example.fifthweekapp.ui.Heroes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,17 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.fifthweekapp.R
-import com.example.fifthweekapp.data.api.DotaAPI
+import com.example.fifthweekapp.data.api.DotaAPI.URL_IMG
 import com.example.fifthweekapp.data.model.HeroesItem
 
-class HeroesAdapter: RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
+class HeroesAdapter(private val onHeroClickListener: OnHeroClickListener) :
+    RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
     private val list = ArrayList<HeroesItem>()
 
-
-    fun setData(map:Map<String,HeroesItem>){
+    fun setData(map: Map<String, HeroesItem>) {
         list.clear()
         list.addAll(map.values)
-
         notifyDataSetChanged()
 
     }
@@ -32,20 +31,20 @@ class HeroesAdapter: RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) {
         val hero = list.get(position)
         holder.bindData(hero)
-
+        holder.itemView.setOnClickListener { onHeroClickListener.onClick(hero) }
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    class HeroesViewHolder(itemView :View): RecyclerView.ViewHolder(itemView){
+    class HeroesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val heroImg = itemView.findViewById<ImageView>(R.id.img_hero)
         val heroName = itemView.findViewById<TextView>(R.id.hero_name)
 
-        fun bindData(item: HeroesItem){
+        fun bindData(item: HeroesItem) {
             heroName.text = item.name
-            heroImg.load("https://api.opendota.com" + item.img)
+            heroImg.load(URL_IMG + item.img)
 
 
         }

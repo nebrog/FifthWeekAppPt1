@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Uspeh/AndroidStudioProjects/FifthWeekApp/app/src/main/res/layout/activity_hero.xml" value="0.1" />
+        <entry key="..\:/Users/Uspeh/AndroidStudioProjects/FifthWeekApp/app/src/main/res/layout/activity_heroes.xml" value="0.1" />
         <entry key="..\:/Users/Uspeh/AndroidStudioProjects/FifthWeekApp/app/src/main/res/layout/activity_main.xml" value="0.1272644927536232" />
         <entry key="..\:/Users/Uspeh/AndroidStudioProjects/FifthWeekApp/app/src/main/res/layout/recycler_view_items.xml" value="0.1" />
         <entry key="..\:/Users/Uspeh/AndroidStudioProjects/FifthWeekApp/app/src/main/res/layout/resyclwview_items.xml" value="0.1" />

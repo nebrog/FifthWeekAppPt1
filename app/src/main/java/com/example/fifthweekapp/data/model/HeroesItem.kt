@@ -3,8 +3,10 @@ package com.example.fifthweekapp.data.model
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
+
 
 data class HeroesItem(
     @Json(name = "id")
@@ -22,4 +24,4 @@ data class HeroesItem(
     @Json(name = "img")
     val img: String,
 
-    )
+    ): Serializable
