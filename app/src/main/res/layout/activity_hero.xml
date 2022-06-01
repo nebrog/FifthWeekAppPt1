@@ -15,7 +15,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:adjustViewBounds="true"
-        android:layout_margin="5dp"
         />
     <TextView
         android:id="@+id/hero_name_fullscreen"
